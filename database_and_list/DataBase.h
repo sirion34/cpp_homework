@@ -6,6 +6,7 @@
  */
 #ifndef DATABASE_H_
 #define DATABASE_H_
+#include "List.h"
 
 void split(const std::string &s, char delim, std::vector<std::string> &elems)
 {
@@ -36,11 +37,11 @@ struct Patient
 class DataBase
 {
 private:
-    std::vector<Patient> patients;
+    List<Patient> patients;
     int length = 0;
     void refresh_length()
     {
-    	length = patients.size();
+    	length = patients.get_size();
     }
     void append_local_patient(const Patient& local_patient)
     {
