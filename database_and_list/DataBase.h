@@ -54,7 +54,7 @@ public:
     DataBase()
 	{
     	std::ifstream file;
-    	file.open("C:\\Users\\Gleb\\eclipse-workspace\\the_hatters\\src\\patientos.txt");
+    	file.open("C:\\Users\\Gleb\\eclipse-workspace\\Basedate\\src\\patientos.txt");
     	while(file)
         {
     		/*In this place, we begin the line-by-line reading.
@@ -140,18 +140,22 @@ public:
 
     void get_info_all()
     {
-    	std::cout << "All patient:" << std::endl;
-
-    	for (int ID = 0; ID < this->length; ++ID)
+    	if (length != 0)
     	{
-    		std::cout << "Patient ID: " << ID << std::endl;
-    		std::cout << this->patients[ID].name << std::endl;
-    		std::cout << this->patients[ID].surname << std::endl;
-    		std::cout << this->patients[ID].sex << std::endl;
-    		std::cout << this->patients[ID].age << std::endl;
-    		std::cout << this->patients[ID].city << std::endl;
-    		std::cout << this->patients[ID].visitAmount << std::endl;
-
+    		std::cout << "All patient:" << std::endl;
+    		for (int ID = 0; ID < this->length; ++ID)
+    		{
+    			std::cout << "Patient ID: " << ID << std::endl;
+    			std::cout << this->patients[ID].name << std::endl;
+    			std::cout << this->patients[ID].surname << std::endl;
+    			std::cout << this->patients[ID].sex << std::endl;
+    			std::cout << this->patients[ID].age << std::endl;
+    			std::cout << this->patients[ID].city << std::endl;
+    			std::cout << this->patients[ID].visitAmount << std::endl;
+    		}
+    	}else
+    	{
+    		std::cout << "No patients" << std::endl;
     	}
     }
 
@@ -174,6 +178,20 @@ public:
 
     	}
     	std :: cout << "Changes saved." << std :: endl;
+    }
+    void remove_some_patient()
+    {
+    	std::cout << "Enter ID patient who you want delete:" << std::endl;
+    	int ID = 0;
+    	std::cin >> ID;
+    	patients.remove(ID);
+    	--length;
+    }
+    void remove_all_patiens()
+    {
+    	patients.clear();
+    	length = 0;
+
     }
 };
 

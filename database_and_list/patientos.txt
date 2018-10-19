@@ -1,6 +1,4 @@
-Jotaro Kujo 1 18 defaulcity 2
-Gyro Zeppeli 1 21 defaulcity 0
-Liza Liza 1 50 Washington 14
-Dio Brando 1 122 London 299
-Jan Polnareff 1 27 Paris 1
-Ilya Seregin 1 19 Ryazhenka 228
+Ivan Ivanov 1 18 Ivanovo 0
+Kakein Noriaki 1 18 Tokio 0
+Giorno Giovanna 1 15 Rome 12
+Liza Liza 1 53 Rome 37
