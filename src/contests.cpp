@@ -12,14 +12,16 @@
 #include <algorithm>
 #include "storage.h"
 #include "book.h"
-#include "HashFunc2.h"
+#include "HashFunc.h"
 #include <list>
 
 
 int main()
 {
-    Storage test;
-    test.read();
-    test.save();
+    Storage<std::string> test;
+    std::cout << getHash("privet");
+    test.add("privet");
+    test.find("privet");
+
     return 0;
 }
