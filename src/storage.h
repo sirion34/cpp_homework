@@ -3,14 +3,14 @@
 #include <string>
 #include <cstdlib>
 #include <list>
-#include "book.h"
+#include <map>
 #include "HashFunc.h"
 
 template<typename T>
 class Storage
 {
 private:
-    std::vector<T> storage;
+    std::map<int, T> storage;
 public:
 //    void read();
 //    void save();
@@ -27,14 +27,14 @@ public:
 template<typename T>
 Storage<T>::Storage()
 {
-	storage.reserve(100000);
+//wd
 }
 
 
 template<typename T>
 Storage<T>::~Storage()
 {
-//	std::cout<<"vihod";
+	storage.clear();
 }
 
 template<typename T>
@@ -55,7 +55,8 @@ template<typename T>
 void Storage<T>::find(T data) const
 {
     int index = getHash(data);
-    if (data == storage[index])
+    T loc = storage.find(index)->second;
+    if (loc == data)
         {
         	std::cout<<"Exist"<<std::endl;
         }else

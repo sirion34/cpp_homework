@@ -11,7 +11,7 @@
 #include <sstream>
 #include <algorithm>
 #include "storage.h"
-#include "book.h"
+//#include "book.h"
 #include "HashFunc.h"
 #include <list>
 
@@ -19,8 +19,18 @@
 int main()
 {
     Storage<std::string> test;
-    std::cout << getHash("privet");
     test.add("privet");
+    std::cout<< "должно выдать Exist. Выдало: ";
+    test.find("privet");
+    std::cout<< "должно выдать Not exist. Выдало: ";
+    test.find("poka");
+    test.add("poka");
+    std::cout<< "должно выдать Exist. Выдало: ";
+    test.find("poka");
+    test.remove("poka");
+    std::cout<< "должно выдать Not exist. Выдало: ";
+    test.find("poka");
+    std::cout<< "должно выдать Exist. Выдало: ";
     test.find("privet");
 
     return 0;
