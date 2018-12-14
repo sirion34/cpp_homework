@@ -47,21 +47,17 @@ void Storage<T>::add(T data)
 template<typename T>
 void Storage<T>::remove(T data)
 {
-    int index = getHash(data);
-    storage[index].clear();
-
+	int index = getHash(data);
+	auto result = std::find(storage[index].begin(), storage[index].end(), data);
+	storage[index].erase(result);
 }
 
 template<typename T>
 void Storage<T>::find(T data) const
 {
     int index = getHash(data);
-    int ea = 0;
-    	if (!storage[index].empty())
-    	{
-    		ea = 1;
-    	}
-    if (ea == 1)
+    auto result = std::find(storage[index].begin(), storage[index].end(), data);
+    if (result != storage[index].end())
         {
         	std::cout<<"Exist"<<std::endl;
         }else
