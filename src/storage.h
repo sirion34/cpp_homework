@@ -10,7 +10,7 @@ template<typename T>
 class Storage
 {
 private:
-    std::map<int, T> storage;
+    std::vector<std::vector<T>> storage;
 public:
 //    void read();
 //    void save();
@@ -27,7 +27,7 @@ public:
 template<typename T>
 Storage<T>::Storage()
 {
-//wd
+	storage.resize(100000);
 }
 
 
@@ -41,22 +41,49 @@ template<typename T>
 void Storage<T>::add(T data)
 {
     int index = getHash(data);
-    storage[index] = data;
+    storage[index].push_back(data);
 }
 
 template<typename T>
 void Storage<T>::remove(T data)
 {
     int index = getHash(data);
-    storage[index].erase();
+
+    for (int i = 0; i < storage[index].size(); ++i)
+    {
+    	if (storage[index][i] == data)
+    	{
+    		storage[index].erase(storage[index].begin()+i);
+    		break;
+    	}
+    }
 }
 
 template<typename T>
 void Storage<T>::find(T data) const
 {
+//    int index = getHash(data);
+//    T loc = storage[index];
+//    if (loc == data)
+//        {
+//        	std::cout<<"Exist"<<std::endl;
+//        }else
+//        {
+//        	std::cout<<"Not exist"<<std::endl;
+//        }
+
     int index = getHash(data);
-    T loc = storage.find(index)->second;
-    if (loc == data)
+//    T loc = storage[index].find(index);
+    int ea = 0;
+    for (int i = 0; i < storage[index].size(); ++i)
+    {
+    	if (storage[index][i] == data)
+    	{
+    		ea = 1;
+    		break;
+    	}
+    }
+    if (ea == 1)
         {
         	std::cout<<"Exist"<<std::endl;
         }else
