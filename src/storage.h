@@ -54,7 +54,10 @@ void Storage<T>::remove(T data)
 {
 	int index = getHash(data);
 	auto result = std::find(storage[index].begin(), storage[index].end(), data);
+	if (result != storage[index].end())
+	{
 	storage[index].erase(result);
+	}
 }
 
 template<typename T>
