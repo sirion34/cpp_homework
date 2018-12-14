@@ -40,8 +40,13 @@ Storage<T>::~Storage()
 template<typename T>
 void Storage<T>::add(T data)
 {
-    int index = getHash(data);
-    storage[index].push_back(data);
+	int index = getHash(data);
+    auto result = std::find(storage[index].begin(), storage[index].end(), data);
+	if (result == storage[index].end())
+	{
+	    storage[index].push_back(data);
+	}
+
 }
 
 template<typename T>
