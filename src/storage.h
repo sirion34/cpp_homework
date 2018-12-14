@@ -10,7 +10,7 @@ template<typename T>
 class Storage
 {
 private:
-    std::vector<std::vector<T>> storage;
+    std::vector<std::list<T>> storage;
 public:
 //    void read();
 //    void save();
@@ -48,41 +48,19 @@ template<typename T>
 void Storage<T>::remove(T data)
 {
     int index = getHash(data);
+    storage[index].clear();
 
-    for (int i = 0; i < storage[index].size(); ++i)
-    {
-    	if (storage[index][i] == data)
-    	{
-    		storage[index].erase(storage[index].begin()+i);
-    		break;
-    	}
-    }
 }
 
 template<typename T>
 void Storage<T>::find(T data) const
 {
-//    int index = getHash(data);
-//    T loc = storage[index];
-//    if (loc == data)
-//        {
-//        	std::cout<<"Exist"<<std::endl;
-//        }else
-//        {
-//        	std::cout<<"Not exist"<<std::endl;
-//        }
-
     int index = getHash(data);
-//    T loc = storage[index].find(index);
     int ea = 0;
-    for (int i = 0; i < storage[index].size(); ++i)
-    {
-    	if (storage[index][i] == data)
+    	if (!storage[index].empty())
     	{
     		ea = 1;
-    		break;
     	}
-    }
     if (ea == 1)
         {
         	std::cout<<"Exist"<<std::endl;

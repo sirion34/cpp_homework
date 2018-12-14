@@ -19,6 +19,7 @@
 int main()
 {
     Storage<std::string> test;
+
     test.add("privet");
     std::cout<< "должно выдать Exist. Выдало: ";
     test.find("privet");
