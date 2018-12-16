@@ -10,6 +10,7 @@
 #include <vector>
 #include <sstream>
 #include <algorithm>
+#include <iterator>
 #include "storage.h"
 
 //#include "book.h"
@@ -34,6 +35,5 @@ int main()
     test.find("poka");
     std::cout<< "должно выдать Exist. Выдало: ";
     test.find("privet");
-
     return 0;
 }

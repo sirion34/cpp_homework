@@ -5,6 +5,7 @@
 #include <list>
 #include <map>
 #include "HashFunc.h"
+#include <iterator>
 
 template<typename T>
 class Storage
@@ -12,8 +13,8 @@ class Storage
 private:
     std::vector<std::list<T>> storage;
 public:
-//    void read();
-//    void save();
+    void read();
+    void save();
 
     Storage();
     ~Storage();
@@ -75,42 +76,38 @@ void Storage<T>::find(T data) const
 }
 
 
+template<typename T>
+void Storage<T>::save()
+{
 
-//void Storage::save()
-//{
-//
-//    std::string filename = "lib";
-//
-//    std::ofstream DATABASE(filename);
-//    std::list<Book>::iterator iter_1;
-//    for (int i = 0; i < 100000; ++i)
-//    {
-//        for (iter_1 = storage[i].begin() ;iter_1 != storage[i].end(); ++iter_1)
-//        {
-//            DATABASE << iter_1->data << std::endl;
-//        }
-//    }
-//}
-//void Storage::read()
-//{
-//    std::string filename = "lib";
-//    std::ifstream DATABASE(filename);
-//    std::string tmp;
-//    while(DATABASE)
-//    {
-//        std::string str;
-//        std::getline(DATABASE, str);
-//        if (str != "")
-//        {
-//            int index = getHash(str);
-//            tmp = "";
-//            Book new_book;
-//            new_book.hash = getHash(str);
-//            new_book.data = str;
-//            storage[index].push_back(new_book);
-//
-//        }
-//
-//    }
-//
-//}
+    std::string filename = "lib.txt";
+    std::ofstream file(filename);
+    for (int i = 0; i < 100000; ++i)
+    {
+    	if (!storage[i].empty())
+    		{
+    			while (!storage[i].empty())
+    			{
+    			file << storage[i].front() << "\n";
+    			storage[i].front().erase();
+       			}
+    		}
+    }
+}
+
+template<typename T>
+void Storage<T>::read()
+{
+    std::string filename = "lib";
+    std::ifstream file(filename);
+    std::string tmp;
+    while(file)
+    {
+        std::string str;
+        std::getline(file, str);
+        if (str != "")
+        {
+        	add(str);
+        }
+    }
+}
